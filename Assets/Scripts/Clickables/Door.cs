@@ -12,7 +12,7 @@ public class Door : MonoBehaviour
     private float distanceToPlayer;
     private bool closeToDoor;
 
-    private void Awake()
+    private void Start()
     {
         mainCamera = Camera.main;
         player = GameManager.instance.player;

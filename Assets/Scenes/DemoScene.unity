@@ -364,7 +364,6 @@ GameObject:
   m_Component:
   - component: {fileID: 483584147}
   - component: {fileID: 483584148}
-  - component: {fileID: 483584149}
   - component: {fileID: 483584151}
   - component: {fileID: 483584150}
   m_Layer: 0
@@ -438,22 +437,6 @@ PolygonCollider2D:
       - {x: -1.61, y: -4.81}
       - {x: 2.25, y: -0.44}
   m_UseDelaunayMesh: 0
---- !u!114 &483584149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 483584146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc03961113fa349c09cb06ef2911013d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clickEnabled: 1
-  hoverCursor: {fileID: 0}
-  useEventSystem: 0
-  activateDistance: 0
 --- !u!114 &483584150
 MonoBehaviour:
   m_ObjectHideFlags: 0
