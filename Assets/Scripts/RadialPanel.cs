@@ -10,12 +10,12 @@ public class RadialPanel : MonoBehaviour
 
     
 
-    public void Start()
+    void Start()
     {
         //HidePanel();
         //radialPanel.SetActive(false);
         //radialPanel.SetActive(true);
-        ShowPanel();
+        //ShowPanel();
     
     }
 
