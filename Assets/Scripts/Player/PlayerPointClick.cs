@@ -27,7 +27,7 @@ public class PlayerPointClick : MonoBehaviour
         {
             HandleMouseInput();
 
-            agent.SetDestination(new Vector3(target.x, target.y, transform.position.z));
+            agent.SetDestination(new Vector3(target.x, target.y, 0f));
         
             AdjustPerspective();
         }
@@ -38,7 +38,7 @@ public class PlayerPointClick : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) // 0 for left mouse button, 1 for right mouse button
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            target = mousePosition;
+            target = new Vector3(mousePosition.x, mousePosition.y, 0f);
         }
     }
 
@@ -46,7 +46,7 @@ public class PlayerPointClick : MonoBehaviour
     {
         float currentYPosition = transform.position.y;
 
-        float t = Mathf.InverseLerp(scaleThreshold, 0, currentYPosition); 
+        float t = Mathf.InverseLerp(scaleThreshold, -10, currentYPosition); 
         float targetScale = Mathf.Lerp(minScale, maxScale, t);
 
         transform.localScale = new Vector3(targetScale, targetScale, 1);
@@ -55,5 +55,11 @@ public class PlayerPointClick : MonoBehaviour
     public void ExitDialogue()
     {
         inDialogue = false;
+    }
+
+    public void WarpPlayer(Vector3 newPosition)
+    {
+        agent.Warp(newPosition);
+        target = transform.position;
     }
 }
