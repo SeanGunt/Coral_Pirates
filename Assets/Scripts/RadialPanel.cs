@@ -8,7 +8,7 @@ public class RadialPanel : MonoBehaviour
     public GameObject radialPanel;
     private Vector3 panelScale = new Vector3(1f, 1f, 0f);
 
-    private void Awake()
+    private void OnEnable()
     {
         //HidePanel();
         //radialPanel.SetActive(false);

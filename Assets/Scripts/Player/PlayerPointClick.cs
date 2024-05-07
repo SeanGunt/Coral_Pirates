@@ -10,7 +10,6 @@ public class PlayerPointClick : MonoBehaviour
     public float minScale = 0.6f;  // Minimum scale factor
     public float maxScale = 1.0f;  // Maximum scale factor
     public float scaleThreshold = 20.0f;  // Where should sprite be at max scale
-    public bool inDialogue;
 
     private void Start()
     {
@@ -23,7 +22,7 @@ public class PlayerPointClick : MonoBehaviour
 
     private void Update()
     {
-        if(inDialogue != true)
+        if(DialogueManager.instance.CheckIfInDialogue() != true)
         {
             HandleMouseInput();
 
@@ -35,7 +34,7 @@ public class PlayerPointClick : MonoBehaviour
 
     private void HandleMouseInput()
     {
-        if (Input.GetMouseButtonDown(0)) // 0 for left mouse button, 1 for right mouse button
+        if (Input.GetMouseButtonDown(0) && !PauseMenu.instance.GetPauseStatus()) // 0 for left mouse button, 1 for right mouse button
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             target = new Vector3(mousePosition.x, mousePosition.y, 0f);
@@ -54,7 +53,7 @@ public class PlayerPointClick : MonoBehaviour
     
     public void ExitDialogue()
     {
-        inDialogue = false;
+        DialogueManager.instance.SetIfInDialogue(false);
     }
 
     public void WarpPlayer(Vector3 newPosition)
