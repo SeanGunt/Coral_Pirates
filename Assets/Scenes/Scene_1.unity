@@ -1544,7 +1544,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6d28632a456844994d62ffb4385ed7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: []
+  dialogue:
+  - Wanna race?
   activationDistance: 3
 --- !u!114 &844482196
 MonoBehaviour:

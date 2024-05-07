@@ -7,12 +7,14 @@ public class Clickable : MonoBehaviour
     public List<string> dialogue = new List<string>();
     [SerializeField] private float activationDistance;
     private GameObject player;
+    private DialogueManager dialogueManager;
     private bool closeToClickable;
     private float distanceToPlayer;
 
     private void Start()
     {
         player = GameManager.instance.player;
+        dialogueManager = DialogueManager.instance;
     }
 
     private void Update()
@@ -40,5 +42,6 @@ public class Clickable : MonoBehaviour
             yield return null;
         }
         Debug.Log("Clickable Reached");
+        dialogueManager.StartDialogue(dialogue);
     }
 }
