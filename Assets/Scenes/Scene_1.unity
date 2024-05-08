@@ -1268,7 +1268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2cc683e668aeb946afb8d8368902ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {x: 0, y: 0}
   minScale: 0.6
   maxScale: 1
   scaleThreshold: 15
@@ -1546,7 +1545,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - Wanna race?
+  - 'I''ll win! '
+  - Gracie bad
+  - Gracie bad and stinky!
   activationDistance: 3
+  index: 0
 --- !u!114 &844482196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1560,7 +1563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 4
+  - eventID: 2
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -1829,6 +1832,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueCanvas: {fileID: 1589878902}
   masterText: {fileID: 2071304054}
+  currentClickable: {fileID: 0}
 --- !u!4 &1090760574
 Transform:
   m_ObjectHideFlags: 0
@@ -4367,6 +4371,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1388235170}
+  - {fileID: 1090760574}
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 722072648}
@@ -4379,4 +4384,3 @@ SceneRoots:
   - {fileID: 1797297005}
   - {fileID: 1756876614}
   - {fileID: 1589878906}
-  - {fileID: 1090760574}

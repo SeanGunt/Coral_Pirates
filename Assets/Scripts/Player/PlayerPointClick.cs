@@ -5,8 +5,9 @@ using UnityEngine.AI;
 
 public class PlayerPointClick : MonoBehaviour
 {
-    public Vector2 target;
+    private Vector2 target;
     private NavMeshAgent agent;
+    private Clickable currentClickable;
     public float minScale = 0.6f;  // Minimum scale factor
     public float maxScale = 1.0f;  // Maximum scale factor
     public float scaleThreshold = 20.0f;  // Where should sprite be at max scale
@@ -14,7 +15,6 @@ public class PlayerPointClick : MonoBehaviour
     private void Start()
     {
         target = transform.position;
-
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -37,23 +37,16 @@ public class PlayerPointClick : MonoBehaviour
         }
         else if (Input.GetMouseButtonDown(0) && !PauseMenu.instance.GetPauseStatus() && DialogueManager.instance.CheckIfInDialogue())
         {
-            DialogueManager.instance.EndDialogue();
+            DialogueManager.instance.ContinueDialogue();
         }
     }
 
     private void AdjustPerspective()
     {
         float currentYPosition = transform.position.y;
-
         float t = Mathf.InverseLerp(scaleThreshold, -10, currentYPosition); 
         float targetScale = Mathf.Lerp(minScale, maxScale, t);
-
         transform.localScale = new Vector3(targetScale, targetScale, 1);
-    }
-    
-    public void ExitDialogue()
-    {
-        DialogueManager.instance.SetIfInDialogue(false);
     }
 
     public void WarpPlayer(Vector3 newPosition)

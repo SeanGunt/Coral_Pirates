@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Clickable : MonoBehaviour
 {
-    public List<string> dialogue = new List<string>();
+    public List<string> dialogue = new();
     [SerializeField] private float activationDistance;
     private GameObject player;
     private DialogueManager dialogueManager;
     private bool closeToClickable;
     private float distanceToPlayer;
+    [HideInInspector] public int index = 0;
 
     private void Start()
     {
@@ -32,7 +33,10 @@ public class Clickable : MonoBehaviour
 
     public void OnClickableClicked()
     {
-        StartCoroutine(ActivateClickable());
+        if (!dialogueManager.CheckIfInDialogue())
+        {
+            StartCoroutine(ActivateClickable());
+        }
     }
 
     private IEnumerator ActivateClickable()
@@ -41,7 +45,6 @@ public class Clickable : MonoBehaviour
         {
             yield return null;
         }
-        Debug.Log("Clickable Reached");
-        dialogueManager.StartDialogue(dialogue);
+        dialogueManager.StartDialogue(dialogue, this);
     }
 }
