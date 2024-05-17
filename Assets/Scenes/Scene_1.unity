@@ -1834,6 +1834,8 @@ MonoBehaviour:
   dialogueCanvas: {fileID: 1589878902}
   masterText: {fileID: 2071304054}
   currentClickable: {fileID: 0}
+  timeBetweenCharacters: 0.1
+  timeBetweenText: 1
 --- !u!4 &1090760574
 Transform:
   m_ObjectHideFlags: 0
