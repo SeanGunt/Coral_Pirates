@@ -9,6 +9,7 @@ public class DialogueManager : MonoBehaviour
     private bool inDialogue;
     public GameObject dialogueCanvas;
     public TextMeshProUGUI masterText;
+    public TextMeshProUGUI nameText;
     public Clickable currentClickable;
     public float timeBetweenCharacters;
     public bool typeWriteActive;
@@ -30,6 +31,7 @@ public class DialogueManager : MonoBehaviour
         dialogueCanvas.SetActive(true);
         inDialogue = true;
         currentClickable = clickableToSet;
+        nameText.text = currentClickable.characterName;
         masterText.text = dialogueToSet[0];
         StartCoroutine(TextVisible());
     }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Clickable : MonoBehaviour
 {
     public List<string> dialogue = new();
+    public string characterName;
     [SerializeField] private float activationDistance;
     private GameObject player;
     private DialogueManager dialogueManager;
