@@ -19,6 +19,7 @@ public class DialogueManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        dialogueCanvas.SetActive(true);
     }
 
     public bool CheckIfInDialogue()
@@ -28,7 +29,6 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(List<string> dialogueToSet, Clickable clickableToSet)
     {
-        dialogueCanvas.SetActive(true);
         inDialogue = true;
         currentClickable = clickableToSet;
         nameText.text = currentClickable.characterName;
@@ -58,10 +58,11 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
-        dialogueCanvas.SetActive(false);
         inDialogue = false;
         currentClickable.index = 0;
         currentClickable = null;
+        masterText.text = "";
+        nameText.text = "";
     }
 
     private IEnumerator TextVisible()

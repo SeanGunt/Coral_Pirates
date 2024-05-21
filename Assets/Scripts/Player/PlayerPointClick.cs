@@ -7,6 +7,7 @@ public class PlayerPointClick : MonoBehaviour
 {
     private Vector2 target;
     private NavMeshAgent agent;
+    private SpriteRenderer spriteRenderer;
     private Clickable currentClickable;
     public float minScale = 0.6f;  // Minimum scale factor
     public float maxScale = 1.0f;  // Maximum scale factor
@@ -16,6 +17,7 @@ public class PlayerPointClick : MonoBehaviour
     {
         target = transform.position;
         agent = GetComponent<NavMeshAgent>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
     }
@@ -23,7 +25,6 @@ public class PlayerPointClick : MonoBehaviour
     private void Update()
     {
         HandleMouseInput();
-        
         AdjustPerspective();
     }
 
@@ -34,6 +35,7 @@ public class PlayerPointClick : MonoBehaviour
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             target = new Vector3(mousePosition.x, mousePosition.y, 0f);
             agent.SetDestination(new Vector3(target.x, target.y, 0f));
+            HandleSpriteFlip();
         }
         else if (Input.GetMouseButtonDown(0) && !PauseMenu.instance.GetPauseStatus() && DialogueManager.instance.CheckIfInDialogue())
         {
@@ -47,6 +49,18 @@ public class PlayerPointClick : MonoBehaviour
         float t = Mathf.InverseLerp(scaleThreshold, -10, currentYPosition); 
         float targetScale = Mathf.Lerp(minScale, maxScale, t);
         transform.localScale = new Vector3(targetScale, targetScale, 1);
+    }
+
+    private void HandleSpriteFlip()
+    {
+        if (target.x < transform.position.x)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 
     public void WarpPlayer(Vector3 newPosition)
