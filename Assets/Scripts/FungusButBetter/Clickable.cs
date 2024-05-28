@@ -4,22 +4,17 @@ using UnityEngine;
 
 public class Clickable : MonoBehaviour
 {
-    public List<string> dialogue = new();
-    public string characterName;
     [SerializeField] private float activationDistance;
     private GameObject player;
-    private DialogueManager dialogueManager;
-    private bool closeToClickable;
+    protected bool closeToClickable;
     private float distanceToPlayer;
-    [HideInInspector] public int index = 0;
 
-    private void Start()
+    protected virtual void Start()
     {
         player = GameManager.instance.player;
-        dialogueManager = DialogueManager.instance;
     }
 
-    private void Update()
+    protected void Update()
     {
         distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
         if (distanceToPlayer <= activationDistance)
@@ -32,20 +27,8 @@ public class Clickable : MonoBehaviour
         }
     }
 
-    public void OnClickableClicked()
+    public virtual void OnClickableClicked()
     {
-        if (!dialogueManager.CheckIfInDialogue())
-        {
-            StartCoroutine(ActivateClickable());
-        }
-    }
 
-    private IEnumerator ActivateClickable()
-    {
-        while (!closeToClickable)
-        {
-            yield return null;
-        }
-        dialogueManager.StartDialogue(dialogue, this);
     }
 }

@@ -10,7 +10,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialogueCanvas;
     public TextMeshProUGUI masterText;
     public TextMeshProUGUI nameText;
-    public Clickable currentClickable;
+    public NPC currentNPC;
     public float timeBetweenCharacters;
     public bool typeWriteActive;
     int visibleCount;
@@ -27,11 +27,11 @@ public class DialogueManager : MonoBehaviour
         return inDialogue;
     }
 
-    public void StartDialogue(List<string> dialogueToSet, Clickable clickableToSet)
+    public void StartDialogue(List<string> dialogueToSet, NPC npcToSet)
     {
         inDialogue = true;
-        currentClickable = clickableToSet;
-        nameText.text = currentClickable.characterName;
+        currentNPC = npcToSet;
+        nameText.text = npcToSet.characterName;
         masterText.text = dialogueToSet[0];
         StartCoroutine(TextVisible());
     }
@@ -44,10 +44,10 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        if (currentClickable.index + 1 < currentClickable.dialogue.Count && !typeWriteActive)
+        if (currentNPC.index + 1 < currentNPC.dialogue.Count && !typeWriteActive)
         {
-            currentClickable.index++;
-            masterText.text = currentClickable.dialogue[currentClickable.index];
+            currentNPC.index++;
+            masterText.text = currentNPC.dialogue[currentNPC.index];
             StartCoroutine(TextVisible());
         }
         else
@@ -59,8 +59,8 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     {
         inDialogue = false;
-        currentClickable.index = 0;
-        currentClickable = null;
+        currentNPC.index = 0;
+        currentNPC = null;
         masterText.text = "";
         nameText.text = "";
     }

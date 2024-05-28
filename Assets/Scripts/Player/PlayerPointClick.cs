@@ -9,6 +9,7 @@ public class PlayerPointClick : MonoBehaviour
     private NavMeshAgent agent;
     private SpriteRenderer spriteRenderer;
     private Clickable currentClickable;
+    public GameObject inventoryGO;
     public float minScale = 0.6f;  // Minimum scale factor
     public float maxScale = 1.0f;  // Maximum scale factor
     public float scaleThreshold = 20.0f;  // Where should sprite be at max scale
@@ -26,6 +27,7 @@ public class PlayerPointClick : MonoBehaviour
     {
         HandleMouseInput();
         AdjustPerspective();
+        OpenInventory();
     }
 
     private void HandleMouseInput()
@@ -42,6 +44,7 @@ public class PlayerPointClick : MonoBehaviour
             DialogueManager.instance.ContinueDialogue();
         }
     }
+    
 
     private void AdjustPerspective()
     {
@@ -67,5 +70,20 @@ public class PlayerPointClick : MonoBehaviour
     {
         agent.Warp(newPosition);
         target = transform.position;
+    }
+
+    private void OpenInventory()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (!inventoryGO.activeInHierarchy)
+            {
+                inventoryGO.SetActive(true);
+            }
+            else
+            {
+                inventoryGO.SetActive(false);
+            }
+        }
     }
 }
