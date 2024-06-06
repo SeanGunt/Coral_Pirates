@@ -32,7 +32,7 @@ public class PlayerPointClick : MonoBehaviour
 
     private void HandleMouseInput()
     {
-        if (Input.GetMouseButtonDown(0) && !PauseMenu.instance.GetPauseStatus() && !DialogueManager.instance.CheckIfInDialogue()) // 0 for left mouse button, 1 for right mouse button
+        if (Input.GetMouseButtonDown(0) && !PauseMenu.instance.GetPauseStatus() && !DialogueManager.instance.CheckIfInDialogue() && !InventoryManager.instance.currentlyHoveringItem) // 0 for left mouse button, 1 for right mouse button
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             target = new Vector3(mousePosition.x, mousePosition.y, 0f);

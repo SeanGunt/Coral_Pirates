@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Pickup : Clickable
 {
     [SerializeField] private Sprite itemSprite;
-    [SerializeField] private string itemName;
+    [SerializeField] private GameObject itemToAdd;
     protected override void Start()
     {
         base.Start();
@@ -18,7 +19,15 @@ public class Pickup : Clickable
 
     private void AddToInventory()
     {
-        InventoryManager.instance.AddItemToInventory(itemName, itemSprite, this.gameObject.transform.parent.gameObject);
+        InventoryItem inventoryItem = InventoryManager.instance.AddItemToInventory();
+        if (inventoryItem != null)
+        {
+            Image image = inventoryItem.gameObject.GetComponent<Image>();
+            GameObject itemToPurchase = Instantiate(itemToAdd, inventoryItem.transform);
+            image.sprite = itemSprite;
+            image.color = Color.white;
+            Destroy(gameObject.transform.parent.gameObject);
+        }
     }
 
     private IEnumerator ActivateClickable()
