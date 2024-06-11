@@ -10,7 +10,6 @@ public class MouseFollower : MonoBehaviour
     private void Awake()
     {
         mainCamera = Camera.main;
-        Toggle(false);
     }
 
     private void Update()

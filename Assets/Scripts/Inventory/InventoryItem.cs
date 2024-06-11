@@ -8,9 +8,9 @@ using UnityEngine.UI;
 public class InventoryItem : MonoBehaviour, IPointerClickHandler,
         IBeginDragHandler, IEndDragHandler, IDropHandler, IDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    [HideInInspector] public Image itemImage;
-    [HideInInspector] public bool itemInitialized;
-    public event Action<InventoryItem> OnItemBeginDrag, OnItemEndDrag, OnItemDropped, OnItemClicked, OnItemBeginHover, OnItemEndHover;
+    public Image itemImage;
+    public bool itemInitialized;
+    public event Action<InventoryItem> OnItemBeginDrag, OnItemEndDrag, OnItemDropped, OnItemClicked, OnItemBeginHover, OnItemEndHover, OnItemDrag;
 
     private void Start()
     {
@@ -33,9 +33,9 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler,
 
     public void OnDrag(PointerEventData eventData)
     {
-        
+        OnItemDrag?.Invoke(this);
     }
-    
+
     public void OnPointerClick(PointerEventData eventData)
     {
         OnItemClicked?.Invoke(this);

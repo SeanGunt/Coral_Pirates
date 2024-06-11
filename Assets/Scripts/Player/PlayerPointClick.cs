@@ -8,7 +8,6 @@ public class PlayerPointClick : MonoBehaviour
     private Vector2 target;
     private NavMeshAgent agent;
     private SpriteRenderer spriteRenderer;
-    private Clickable currentClickable;
     public GameObject inventoryGO;
     public float minScale = 0.6f;  // Minimum scale factor
     public float maxScale = 1.0f;  // Maximum scale factor

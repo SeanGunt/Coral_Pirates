@@ -8204,7 +8204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseFollower: {fileID: 1036301347}
-  ghostImagePrefab: {fileID: 8586634142944422792, guid: 9fe08c60dc2b46743b9a83478092880a, type: 3}
+  ghostImagePrefab: {fileID: 8586634142944422792, guid: 05e4aff265fb4894e9f7599d0b06c70b, type: 3}
+  currentlyHoveringItem: 0
   inventoryList:
   - {fileID: 299949680}
   - {fileID: 309853642}

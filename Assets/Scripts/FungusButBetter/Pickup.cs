@@ -7,6 +7,7 @@ public class Pickup : Clickable
 {
     [SerializeField] private Sprite itemSprite;
     [SerializeField] private GameObject itemToAdd;
+    private bool itemAdded;
     protected override void Start()
     {
         base.Start();
@@ -20,12 +21,13 @@ public class Pickup : Clickable
     private void AddToInventory()
     {
         InventoryItem inventoryItem = InventoryManager.instance.AddItemToInventory();
-        if (inventoryItem != null)
+        if (inventoryItem != null && !itemAdded)
         {
             Image image = inventoryItem.gameObject.GetComponent<Image>();
-            GameObject itemToPurchase = Instantiate(itemToAdd, inventoryItem.transform);
+            Instantiate(itemToAdd, inventoryItem.transform);
             image.sprite = itemSprite;
             image.color = Color.white;
+            itemAdded = true;
             Destroy(gameObject.transform.parent.gameObject);
         }
     }

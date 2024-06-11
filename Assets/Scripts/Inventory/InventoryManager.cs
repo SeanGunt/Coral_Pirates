@@ -27,6 +27,7 @@ public class InventoryManager : MonoBehaviour
         inventoryItem.OnItemClicked += HandleItemSelection;
         inventoryItem.OnItemBeginDrag += HandleBeginDrag;
         inventoryItem.OnItemDropped += HandleItemInteraction;
+        inventoryItem.OnItemDrag += HandleDrag;
         inventoryItem.OnItemEndDrag += HandleEndDrag;
         inventoryItem.OnItemBeginHover += HandleBeginHover;
         inventoryItem.OnItemEndHover += HandleEndHover;
@@ -69,33 +70,40 @@ public class InventoryManager : MonoBehaviour
     {
         Debug.Log("Freaky Jumpscare");
     }
-    private void HandleBeginDrag(InventoryItem item)
+    public void HandleBeginDrag(InventoryItem item)
     {
         if (!item.itemInitialized) return;
         currentlyDraggingItem = true;
         CreateOrDestroyGhostItem(true, item);
         mouseFollower.Toggle(true);
+        Debug.Log("Begin Drag");
     }
 
-    private void HandleEndDrag(InventoryItem item)
+    public void HandleEndDrag(InventoryItem item)
     {
         CreateOrDestroyGhostItem(false, item);
         mouseFollower.Toggle(false);
         currentlyDraggingItem = false;
+        Debug.Log("End Drag");
     }
 
-    private void HandleItemInteraction(InventoryItem item)
+    public void HandleDrag(InventoryItem item)
     {
-        if (!currentlyDraggingItem) return;
+        Debug.Log(ghostImage.transform.localPosition);
     }
 
-    private void HandleBeginHover(InventoryItem item)
+    public void HandleItemInteraction(InventoryItem item)
+    {
+        Debug.Log("Dropped Item");
+    }
+
+    public void HandleBeginHover(InventoryItem item)
     {
         currentlyHoveringItem = true;
         Debug.Log("Hovering item");
     }
 
-    private void HandleEndHover(InventoryItem item)
+    public void HandleEndHover(InventoryItem item)
     {
         currentlyHoveringItem = false;
         Debug.Log("End Hovering Item");
