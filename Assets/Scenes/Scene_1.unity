@@ -8021,8 +8021,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1487614911}
   - component: {fileID: 1487614909}
+  - component: {fileID: 1487614912}
   m_Layer: 0
-  m_Name: ClickableCouch
+  m_Name: ItemInteraction_Couch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8088,6 +8089,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1386514997}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1487614912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487614907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0bc0d420643f3c4cae177bc148c659e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activationDistance: 4
+  closeToClickable: 0
+  ffSprite: {fileID: 21300000, guid: 1d135f8eef496514b9cf725b1c14e9c1, type: 3}
 --- !u!1 &1502965279
 GameObject:
   m_ObjectHideFlags: 0
@@ -8206,6 +8222,7 @@ MonoBehaviour:
   mouseFollower: {fileID: 1036301347}
   ghostImagePrefab: {fileID: 8586634142944422792, guid: 05e4aff265fb4894e9f7599d0b06c70b, type: 3}
   currentlyHoveringItem: 0
+  nameOfSelectedItem: 
   inventoryList:
   - {fileID: 299949680}
   - {fileID: 309853642}

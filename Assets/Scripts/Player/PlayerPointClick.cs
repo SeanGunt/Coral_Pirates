@@ -43,8 +43,13 @@ public class PlayerPointClick : MonoBehaviour
             DialogueManager.instance.ContinueDialogue();
         }
     }
-    
 
+    public void SetTarget(Vector3 targetPositionToSet)
+    {
+        target = targetPositionToSet;
+        agent.SetDestination(new Vector3(target.x, target.y, 0f));
+    }
+    
     private void AdjustPerspective()
     {
         float currentYPosition = transform.position.y;

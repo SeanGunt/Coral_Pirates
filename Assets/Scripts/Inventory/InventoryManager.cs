@@ -10,8 +10,8 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private MouseFollower mouseFollower;
     [SerializeField] private GameObject ghostImagePrefab;
     private GameObject ghostImage;
-    private bool currentlyDraggingItem;
     [HideInInspector] public bool currentlyHoveringItem = false;
+    [HideInInspector] public string nameOfSelectedItem;
     public List<InventoryItem> inventoryList = new(24);
     private void Awake()
     {
@@ -26,8 +26,6 @@ public class InventoryManager : MonoBehaviour
     {
         inventoryItem.OnItemClicked += HandleItemSelection;
         inventoryItem.OnItemBeginDrag += HandleBeginDrag;
-        inventoryItem.OnItemDropped += HandleItemInteraction;
-        inventoryItem.OnItemDrag += HandleDrag;
         inventoryItem.OnItemEndDrag += HandleEndDrag;
         inventoryItem.OnItemBeginHover += HandleBeginHover;
         inventoryItem.OnItemEndHover += HandleEndHover;
@@ -66,6 +64,29 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    private void GetDraggedItem(InventoryItem item)
+    {
+        GameObject itemGameobject = item.transform.GetChild(0).gameObject;
+        nameOfSelectedItem = itemGameobject.name;
+        Debug.Log(nameOfSelectedItem);
+    }
+
+    private void ResetDraggedItem()
+    {
+        nameOfSelectedItem = "";
+    }
+
+    private IEnumerator MovePlayerToInteractionPoint(Vector3 targetPosition, ItemInteractor itemInteractor)
+    {
+        GameManager.instance.player.GetComponent<PlayerPointClick>().SetTarget(targetPosition);
+        while (!itemInteractor.closeToClickable)
+        {
+            yield return null;
+        }
+        itemInteractor?.Interact();
+        ResetDraggedItem();
+    }
+
     public void HandleItemSelection(InventoryItem item)
     {
         Debug.Log("Freaky Jumpscare");
@@ -73,28 +94,26 @@ public class InventoryManager : MonoBehaviour
     public void HandleBeginDrag(InventoryItem item)
     {
         if (!item.itemInitialized) return;
-        currentlyDraggingItem = true;
         CreateOrDestroyGhostItem(true, item);
+        GetDraggedItem(item);
         mouseFollower.Toggle(true);
         Debug.Log("Begin Drag");
     }
 
     public void HandleEndDrag(InventoryItem item)
     {
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        if (hit.collider != null)
+        {
+            ItemInteractor itemInteractor = hit.collider.GetComponent<ItemInteractor>();
+            if (itemInteractor != null)
+            {
+                StartCoroutine(MovePlayerToInteractionPoint(hit.collider.transform.position, itemInteractor));
+            }
+        }
         CreateOrDestroyGhostItem(false, item);
         mouseFollower.Toggle(false);
-        currentlyDraggingItem = false;
         Debug.Log("End Drag");
-    }
-
-    public void HandleDrag(InventoryItem item)
-    {
-        Debug.Log(ghostImage.transform.localPosition);
-    }
-
-    public void HandleItemInteraction(InventoryItem item)
-    {
-        Debug.Log("Dropped Item");
     }
 
     public void HandleBeginHover(InventoryItem item)
