@@ -9,12 +9,21 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler,
         IBeginDragHandler, IEndDragHandler, IDropHandler, IDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Image itemImage;
+    public Image backgroundImage;
     public bool itemInitialized;
+    public bool itemUsed;
     public event Action<InventoryItem> OnItemBeginDrag, OnItemEndDrag, OnItemDropped, OnItemClicked, OnItemBeginHover, OnItemEndHover, OnItemDrag;
 
     private void Start()
     {
         itemImage = GetComponent<Image>();
+    }
+
+    public void ItemUsed()
+    {
+        itemUsed = true;
+        itemImage.color = Color.gray;
+        backgroundImage.color = Color.gray;
     }
     public void OnBeginDrag(PointerEventData eventData)
     {

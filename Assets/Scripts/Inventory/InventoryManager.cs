@@ -76,7 +76,7 @@ public class InventoryManager : MonoBehaviour
         nameOfSelectedItem = "";
     }
 
-    private IEnumerator MovePlayerToInteractionPoint(Vector3 targetPosition, ItemInteractor itemInteractor)
+    private IEnumerator MovePlayerToInteractionPoint(Vector3 targetPosition, ItemInteractor itemInteractor, InventoryItem item)
     {
         GameManager.instance.player.GetComponent<PlayerPointClick>().SetTarget(targetPosition);
         while (!itemInteractor.closeToClickable)
@@ -84,6 +84,7 @@ public class InventoryManager : MonoBehaviour
             yield return null;
         }
         itemInteractor?.Interact();
+        item.ItemUsed();
         ResetDraggedItem();
     }
 
@@ -93,7 +94,7 @@ public class InventoryManager : MonoBehaviour
     }
     public void HandleBeginDrag(InventoryItem item)
     {
-        if (!item.itemInitialized) return;
+        if (!item.itemInitialized || item.itemUsed) return;
         CreateOrDestroyGhostItem(true, item);
         GetDraggedItem(item);
         mouseFollower.Toggle(true);
@@ -108,7 +109,7 @@ public class InventoryManager : MonoBehaviour
             ItemInteractor itemInteractor = hit.collider.GetComponent<ItemInteractor>();
             if (itemInteractor != null)
             {
-                StartCoroutine(MovePlayerToInteractionPoint(hit.collider.transform.position, itemInteractor));
+                StartCoroutine(MovePlayerToInteractionPoint(hit.collider.transform.position, itemInteractor, item));
             }
         }
         CreateOrDestroyGhostItem(false, item);
