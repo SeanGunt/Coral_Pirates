@@ -52,7 +52,7 @@ public class Door : MonoBehaviour
         if (teleports)
         {
             player.GetComponent<PlayerPointClick>().WarpPlayer(TeleportPlayer());
-            mainCamera.transform.position = CameraPositions.instance.positions[camerPosIndex];
+            mainCamera.transform.position = new Vector3(CameraPositions.instance.positions[camerPosIndex].position.x, CameraPositions.instance.positions[camerPosIndex].position.y, -10f);
         }
     }
 }

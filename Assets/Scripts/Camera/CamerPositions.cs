@@ -4,7 +4,7 @@ using UnityEngine;
 public class CameraPositions : MonoBehaviour
 {
     public static CameraPositions instance;
-    public List<Vector3> positions = new List<Vector3>();
+    public List<Transform> positions = new List<Transform>();
 
     public void Awake()
     {
