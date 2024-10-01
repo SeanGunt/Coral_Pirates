@@ -11,7 +11,7 @@ public class InteractionCouch : ItemInteractor
         if (InventoryManager.instance.nameOfSelectedItem == "Item_FreakFish(Clone)")
         {
             GameObject FF = new();
-            FF.transform.parent = this.transform;
+            FF.transform.parent = transform;
             SpriteRenderer ffSpriteRenderer = FF.AddComponent<SpriteRenderer>();
             ffSpriteRenderer.sortingOrder = 1;
             ffSpriteRenderer.sprite = ffSprite;

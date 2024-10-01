@@ -6,7 +6,9 @@ public class Door : MonoBehaviour
 {
     [SerializeField] private bool teleports;
     [SerializeField] private GameObject teleportLocation;
-    [SerializeField] private int camerPosIndex;
+    [SerializeField] private int cameraPosIndex;
+    [SerializeField] private float cameraXOffset;
+    [SerializeField] private float cameraYOffset;
     private GameObject player;
     private Camera mainCamera;
     private float distanceToPlayer;
@@ -20,7 +22,7 @@ public class Door : MonoBehaviour
 
     private void Update()
     {
-        distanceToPlayer = Vector2.Distance(player.transform.position, this.transform.position);
+        distanceToPlayer = Vector2.Distance(player.transform.position, transform.position);
         if (distanceToPlayer <= 5f)
         {
             closeToDoor = true;
@@ -52,7 +54,7 @@ public class Door : MonoBehaviour
         if (teleports)
         {
             player.GetComponent<PlayerPointClick>().WarpPlayer(TeleportPlayer());
-            mainCamera.transform.position = new Vector3(CameraPositions.instance.positions[camerPosIndex].position.x, CameraPositions.instance.positions[camerPosIndex].position.y, -10f);
+            mainCamera.transform.position = new Vector3(CameraPositions.instance.positions[cameraPosIndex].position.x + cameraXOffset, CameraPositions.instance.positions[cameraPosIndex].position.y + cameraYOffset, -10f);
         }
     }
 }
