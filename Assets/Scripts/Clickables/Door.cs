@@ -6,6 +6,7 @@ public class Door : MonoBehaviour
 {
     [SerializeField] private bool teleports;
     [SerializeField] private GameObject teleportLocation;
+    [SerializeField] private PolygonCollider2D nextCameraConfiner;
     [SerializeField] private int cameraPosIndex;
     [SerializeField] private float cameraXOffset;
     [SerializeField] private float cameraYOffset;
@@ -55,6 +56,7 @@ public class Door : MonoBehaviour
         {
             player.GetComponent<PlayerPointClick>().WarpPlayer(TeleportPlayer());
             mainCamera.transform.position = new Vector3(CameraPositions.instance.positions[cameraPosIndex].position.x + cameraXOffset, CameraPositions.instance.positions[cameraPosIndex].position.y + cameraYOffset, -10f);
+            CameraPositions.instance.confiner2D.m_BoundingShape2D = nextCameraConfiner;
         }
     }
 }
