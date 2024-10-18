@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,7 +12,12 @@ public class PlayerPointClick : MonoBehaviour
     public GameObject inventoryGO;
     public float minScale = 0.6f;  // Minimum scale factor
     public float maxScale = 1.0f;  // Maximum scale factor
-    public float scaleThreshold = 20.0f;  // Where should sprite be at max scale
+    public float scaleThreshold = 20.0f;  // Where should sprite be at max scale i made this up btw
+
+    public Animator animator;
+    int PlayerCam = 0;
+    int DialogueCam = 0;
+
 
     private void Start()
     {
@@ -20,6 +26,14 @@ public class PlayerPointClick : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+
+        animator = GetComponent<Animator>();
+        //animator = GetComponentInChildren<Animator>(); 
+        animator.enabled = true;
+        
+
+        PlayerCam = 1;
+
     }
 
     private void Update()
@@ -27,6 +41,10 @@ public class PlayerPointClick : MonoBehaviour
         HandleMouseInput();
         AdjustPerspective();
         OpenInventory();
+
+        animator.SetInteger("PlayerCam", PlayerCam);
+        animator.SetInteger("DialogueCam", DialogueCam);
+
     }
 
     private void HandleMouseInput()
@@ -90,4 +108,29 @@ public class PlayerPointClick : MonoBehaviour
             }
         }
     }
+
+
+    public void LemTalking()
+    {
+        /*if(DialogueManager.instance.CheckIfInDialogue())
+        {
+            Debug.Log("lem talking active");
+            PlayerCam = 0;
+            DialogueCam = 1;
+        }*/
+
+        Debug.Log("lem talking active");
+        PlayerCam = 0;
+        DialogueCam = 1;
+        
+    }
+
+    public void LemNotTalking()
+    {
+        Debug.Log("lem talking not active");
+        PlayerCam = 1;
+        DialogueCam = 0;
+    }
+    
+    
 }

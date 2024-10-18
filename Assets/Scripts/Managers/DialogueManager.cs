@@ -34,6 +34,8 @@ public class DialogueManager : MonoBehaviour
         nameText.text = npcToSet.characterName;
         masterText.text = dialogueToSet[0];
         StartCoroutine(TextVisible());
+
+        GameManager.instance.player.GetComponent<PlayerPointClick>().LemTalking();
     }
 
     public void ContinueDialogue()
@@ -53,6 +55,7 @@ public class DialogueManager : MonoBehaviour
         else
         {
             Invoke("EndDialogue", 0.1f);
+            GameManager.instance.player.GetComponent<PlayerPointClick>().LemNotTalking();
         }
     }
 
