@@ -54,6 +54,13 @@ public class Door : MonoBehaviour
         Debug.Log("Player Reached Door!");
         if (teleports)
         {
+            float timeTillTeleport = 0.6f;
+            GameManager.instance.transitionBackground.GetComponent<Animator>().SetTrigger("Transition");
+            while (timeTillTeleport >= 0)
+            {
+                timeTillTeleport -= Time.deltaTime;
+                yield return null;
+            }
             player.GetComponent<PlayerPointClick>().WarpPlayer(TeleportPlayer());
             mainCamera.transform.position = new Vector3(CameraPositions.instance.positions[cameraPosIndex].position.x + cameraXOffset, CameraPositions.instance.positions[cameraPosIndex].position.y + cameraYOffset, -10f);
             CameraPositions.instance.confiner2D.m_BoundingShape2D = nextCameraConfiner;
