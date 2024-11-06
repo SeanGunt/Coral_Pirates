@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PlayerPointClick : MonoBehaviour
+public class PlayerPointClick : MonoBehaviour, IDataGrabber
 {
     private Vector2 target;
     private NavMeshAgent agent;
@@ -18,6 +18,16 @@ public class PlayerPointClick : MonoBehaviour
     int PlayerCam = 0;
     int DialogueCam = 0;
 
+    public void LoadData(GameData data)
+    {
+        transform.position = data.position;
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.position = transform.position;
+    }
+
 
     private void Start()
     {
@@ -27,8 +37,7 @@ public class PlayerPointClick : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
 
-        animator = GetComponent<Animator>();
-        //animator = GetComponentInChildren<Animator>(); 
+        animator = GetComponent<Animator>(); 
         animator.enabled = true;
         
 
@@ -112,17 +121,9 @@ public class PlayerPointClick : MonoBehaviour
 
     public void LemTalking()
     {
-        /*if(DialogueManager.instance.CheckIfInDialogue())
-        {
-            Debug.Log("lem talking active");
-            PlayerCam = 0;
-            DialogueCam = 1;
-        }*/
-
         Debug.Log("lem talking active");
         PlayerCam = 0;
         DialogueCam = 1;
-        
     }
 
     public void LemNotTalking()
@@ -131,6 +132,4 @@ public class PlayerPointClick : MonoBehaviour
         PlayerCam = 1;
         DialogueCam = 0;
     }
-    
-    
 }
