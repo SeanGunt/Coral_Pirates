@@ -63,6 +63,7 @@ public class GameDataManager: MonoBehaviour
         }
         else
         {
+            Debug.LogError("Save file does not exist, creating a new one");
             SaveGame();
         }
     }
