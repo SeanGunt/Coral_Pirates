@@ -17,6 +17,7 @@ public class PlayerPointClick : MonoBehaviour, IDataGrabber
     public Animator animator;
     int PlayerCam = 0;
     int DialogueCam = 0;
+    
 
     public void LoadData(GameData data)
     {
@@ -132,4 +133,7 @@ public class PlayerPointClick : MonoBehaviour, IDataGrabber
         PlayerCam = 1;
         DialogueCam = 0;
     }
+
+
+
 }

@@ -27,6 +27,8 @@ public class Minigame : Clickable
         PlayMinigame();
     }
 
+    
+
     //need to disable player movement and reenable it when u exit minigame but dont want to
     //make two bools to disable lem movement
 

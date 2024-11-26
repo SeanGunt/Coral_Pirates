@@ -5134,7 +5134,7 @@ MonoBehaviour:
   minScale: 0.38
   maxScale: 1
   scaleThreshold: 15
-  animator: {fileID: 0}
+  animator: {fileID: 722072655}
 --- !u!95 &722072655
 Animator:
   serializedVersion: 5
@@ -12916,7 +12916,7 @@ MonoBehaviour:
   - {fileID: 1813697507}
   - {fileID: 1805788021}
   m_Instructions:
-  - m_FullHash: 963201592
+  - m_FullHash: 1190492477
     m_VirtualCamera: {fileID: 1813697507}
     m_ActivateAfter: 0
     m_MinDuration: 0
@@ -12935,7 +12935,7 @@ MonoBehaviour:
       m_RotationOrder: 4
   m_CustomBlends: {fileID: 11400000, guid: 0a262f0c258786f418385c44a2f16da8, type: 2}
   m_ParentHash:
-  - m_Hash: 963201592
+  - m_Hash: 1190492477
     m_ParentHash: 756556552
   - m_Hash: 2039675255
     m_ParentHash: 756556552
@@ -13556,7 +13556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDistance: 6
-  minigameCanvas: {fileID: 6596807509394885497, guid: 57d48b8b76850cf4e9728e30be511efc, type: 3}
+  minigameCanvas: {fileID: 7408224265038799399, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
 --- !u!114 &1719668553
 MonoBehaviour:
   m_ObjectHideFlags: 0
