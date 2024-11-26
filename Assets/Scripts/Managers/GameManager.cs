@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     [HideInInspector] public GameObject player;
     [HideInInspector] public GameObject transitionBackground;
+    [HideInInspector] public bool lemCanMove;
 
     private void Awake()
     {
@@ -14,5 +15,6 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         transitionBackground = GameObject.FindGameObjectWithTag("TransitionBackground");
         transitionBackground.SetActive(true);
+        lemCanMove = true;
     }
 }
