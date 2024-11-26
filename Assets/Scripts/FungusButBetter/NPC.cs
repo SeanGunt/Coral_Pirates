@@ -17,7 +17,7 @@ public class NPC : Clickable
 
     public override void OnClickableClicked()
     {
-        if (!dialogueManager.CheckIfInDialogue())
+        if (GameManager.instance.lemCanMove)
         {
             StartCoroutine(ActivateClickable());
         }

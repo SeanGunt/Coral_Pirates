@@ -6,7 +6,6 @@ using TMPro;
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
-    private bool inDialogue;
     public GameObject dialogueCanvas;
     public TextMeshProUGUI masterText;
     public TextMeshProUGUI nameText;
@@ -22,14 +21,9 @@ public class DialogueManager : MonoBehaviour
         dialogueCanvas.SetActive(true);
     }
 
-    public bool CheckIfInDialogue()
-    {
-        return inDialogue;
-    }
-
     public void StartDialogue(List<string> dialogueToSet, NPC npcToSet)
     {
-        inDialogue = true;
+        GameManager.instance.lemCanMove = false;
         currentNPC = npcToSet;
         nameText.text = npcToSet.characterName;
         masterText.text = dialogueToSet[0];
@@ -61,7 +55,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
-        inDialogue = false;
+        GameManager.instance.lemCanMove = true;
         currentNPC.index = 0;
         currentNPC = null;
         masterText.text = "";

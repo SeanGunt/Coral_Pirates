@@ -8,6 +8,7 @@ using UnityEngine;
 public class GameData
 {
     public Vector3 position;
+    public SerializableDictionary<string, bool> itemCollected;
 }
 
 public class GameDataManager: MonoBehaviour
@@ -19,7 +20,8 @@ public class GameDataManager: MonoBehaviour
     {
         gameData = new GameData
         {
-            position = new Vector3(-2.9f, 5.2f, 0.0f)
+            position = new Vector3(-2.9f, 5.2f, 0.0f),
+            itemCollected = new SerializableDictionary<string, bool>()
         };
 
         saveFilePath =  Application.persistentDataPath + "/GameData.Json";
