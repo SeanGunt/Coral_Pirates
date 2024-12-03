@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+
 //using System.Numerics;
 using UnityEngine;
 
@@ -18,16 +20,16 @@ public class TelescopeGame : MonoBehaviour
 
     private float viewport = 10f;
 
-    private void Start()
+    private void OnEnable()
     {
         //MapBoundary();
+
+        GameManager.instance.lemCanMove = false;
     }
     
     private void Update()
     {
-        PanCamera();
-
-
+        PanCamera();        
     
 
     }
@@ -93,49 +95,35 @@ public class TelescopeGame : MonoBehaviour
         return new Vector3(newX, newY, targetPosition.z);
     }
 
-    
-    /*
-    
-    //public bool telescopeCam = false;
-    //public Texture2D telescopeCursor; //null = default system cursor
-    //public CursorMode cursorMode = CursorMode.Auto;
-    //public Vector2 hotSpot = Vector2.zero;
-    //nooo it would need to be a gameobject attached to the cursor?
-
-    private Vector3 scopePosition;
-    private float moveSpeed = 1;
-
-    private Canvas canvas;
-
-    
-    void Start()
+    public void ExitGame()
     {
-        GameManager.instance.player.GetComponent<PlayerPointClick>().LemTelescope();
+        GameManager.instance.lemCanMove = true;
 
-        canvas = GetComponentInParent<Canvas>();
     }
 
+    public Canvas telescopeCanvas;
+
+    public int currentPieces;
+    public int totalPieces;
+
+    public TextMeshProUGUI collectedText;
     
-    void Update()
+    public void CollectPages(int totalPieces)
     {
-        scopePosition = Input.mousePosition;
-		//scopePosition = Camera.main.ScreenToWorldPoint(scopePosition);
-		//transform.position = Vector2.Lerp(transform.position, scopePosition, moveSpeed);
-
-        RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)canvas.transform, scopePosition, canvas.worldCamera, out Vector2 position);
-        transform.position = canvas.transform.TransformPoint(position);
-
-        
+        currentPieces += totalPieces;
+        Debug.Log("collected FF");
     }
 
-    public void HandleTelescopeGame()
+    public void UpdateCollected()
     {
-        //when minigame is active, set telescope cam to true
-        //when telescope cam is true
-        //change cursor
-        //camera follows mouse position
-        //mousePosition = Input.mousePosition;
-		//mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-		//transform.position = Vector2.Lerp(transform.position, mousePosition, moveSpeed);
-    }*/
+        collectedText.text = currentPieces + "/" + totalPieces.ToString();
+        Debug.Log("updated collected");
+    }
+
+    //after theyve been clicked, 
+    //the 2d box colliders with the 
+    //pieces in the boardwalk scene are enabled.
+
+    
+   
 }

@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Minigame : Clickable
 {
-    [SerializeField] private GameObject minigameCanvas;
+    [SerializeField] private GameObject minigameObject;
     void PlayMinigame()
     {
         //would it be crazy if each minigame canvas or gameobj was a prefab 
         //and the specific clickable u interacted with just grabbed that prefab 
         //and u would do/complete the minigame then exit or whatever
-        Instantiate(minigameCanvas, new Vector3(0, 0, 0), Quaternion.identity);
+        minigameObject.SetActive(true);
+        //Instantiate(minigameObject, new Vector3(0, 0, 0), Quaternion.identity);
     }
 
     public override void OnClickableClicked()
