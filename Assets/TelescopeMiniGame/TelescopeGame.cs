@@ -107,6 +107,8 @@ public class TelescopeGame : MonoBehaviour
     public int totalPieces;
 
     public TextMeshProUGUI collectedText;
+    private bool happyPete;
+    public GameObject findingSpots;
     
     public void CollectPages(int totalPieces)
     {
@@ -118,6 +120,11 @@ public class TelescopeGame : MonoBehaviour
     {
         collectedText.text = currentPieces + "/" + totalPieces.ToString();
         Debug.Log("updated collected");
+
+        if(currentPieces == totalPieces)
+        {
+            findingSpots.SetActive(true);
+        }
     }
 
     //after theyve been clicked, 
