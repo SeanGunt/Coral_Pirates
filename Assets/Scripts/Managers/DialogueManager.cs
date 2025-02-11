@@ -40,10 +40,10 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        if (currentNPC.index + 1 < currentNPC.dialogue.Count && !typeWriteActive)
+        if (currentNPC.index + 1 < currentNPC.dialogue[currentNPC.indexOfDialogue].dialogueToUse.Count && !typeWriteActive)
         {
             currentNPC.index++;
-            masterText.text = currentNPC.dialogue[currentNPC.index];
+            masterText.text = currentNPC.dialogue[currentNPC.indexOfDialogue].dialogueToUse[currentNPC.index];
             StartCoroutine(TextVisible());
         }
         else

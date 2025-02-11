@@ -15,6 +15,13 @@ public class InteractionCouch : ItemInteractor
             ffSpriteRenderer.sortingOrder = 1;
             ffSpriteRenderer.sprite = ffSprite;
             FF.transform.localPosition = Vector3.zero;
+            foreach(var objective in QuestManager.instance.objectives)
+            {
+                if (objective.ContainsKey("FFPlaced"))
+                {
+                    objective["FFPlaced"] = true;
+                }
+            }
         }
     }
 }

@@ -9,5 +9,10 @@ public class QuestManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        SerializableDictionary<string, bool> ffPlacedDictionary = new SerializableDictionary<string, bool>()
+        {
+            {"FFPlaced", false}
+        };
+        objectives.Add(ffPlacedDictionary);
     }
 }
