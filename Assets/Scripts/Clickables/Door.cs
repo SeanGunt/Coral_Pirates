@@ -48,7 +48,7 @@ public class Door : MonoBehaviour
     {
         while (!closeToDoor)
         {
-            Debug.Log("Player moving to door");
+            //Debug.Log("Player moving to door");
             yield return null;
         }
         Debug.Log("Player Reached Door!");

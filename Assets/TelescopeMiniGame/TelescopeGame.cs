@@ -113,13 +113,11 @@ public class TelescopeGame : MonoBehaviour
     public void CollectPages(int totalPieces)
     {
         currentPieces += totalPieces;
-        Debug.Log("collected FF");
     }
 
     public void UpdateCollected()
     {
         collectedText.text = currentPieces + "/" + totalPieces.ToString();
-        Debug.Log("updated collected");
 
         if(currentPieces == totalPieces)
         {
