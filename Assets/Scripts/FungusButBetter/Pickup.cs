@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class Pickup : Clickable, IDataGrabber
 {
-    [SerializeField] private Sprite itemSprite;
-    [SerializeField] private GameObject itemToAdd;
-    [SerializeField] private string objectName;
-    private bool itemAdded;
+    [SerializeField] protected Sprite itemSprite;
+    [SerializeField] protected GameObject itemToAdd;
+    [SerializeField] protected string objectName;
+    protected bool itemAdded;
 
     public void LoadData(GameData data)
     {
@@ -36,9 +36,10 @@ public class Pickup : Clickable, IDataGrabber
     public override void OnClickableClicked()
     {
         StartCoroutine(ActivateClickable());
+        Debug.Log("Item Clicked");
     }
 
-    private void AddToInventory()
+    protected virtual void AddToInventory()
     {
         InventoryItem inventoryItem = InventoryManager.instance.AddItemToInventory();
         if (inventoryItem != null && !itemAdded)

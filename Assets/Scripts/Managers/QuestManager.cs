@@ -12,7 +12,7 @@ public class QuestManager : MonoBehaviour
        instance = this;
         SerializableDictionary<string, bool> ledgerFoundDictionary = new SerializableDictionary<string, bool>()
         {
-            {"LedgerFound", false}
+            {"LedgerPiecesFound", false}
         };
         objectives.Add(ledgerFoundDictionary);
        
