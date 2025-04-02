@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class DialogueChecker
@@ -36,5 +37,17 @@ public class NPC : Clickable
             yield return null;
         }
         dialogueManager.StartDialogue(dialogue[indexOfDialogue].dialogueToUse, this);
+    }
+
+    protected virtual void AddToInventory(GameObject itemToAdd, Sprite itemSprite)
+    {
+        InventoryItem inventoryItem = InventoryManager.instance.AddItemToInventory();
+        if (inventoryItem != null)
+        {
+            Image image = inventoryItem.gameObject.GetComponent<Image>();
+            Instantiate(itemToAdd, inventoryItem.transform);
+            image.sprite = itemSprite;
+            image.color = Color.white;
+        }
     }
 }

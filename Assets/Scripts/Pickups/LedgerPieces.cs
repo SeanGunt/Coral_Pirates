@@ -18,6 +18,13 @@ public class LedgerPieces : Pickup
             if (Utility.instance.GetListOfObjectsByScriptType("LedgerPieces").Count - 1 == 0)
             {
                 Debug.Log("Collected All Pieces");
+                foreach(var objective in QuestManager.instance.objectives)
+                {
+                    if (objective.ContainsKey("LedgerPiecesFound"))
+                    {
+                        objective["LedgerPiecesFound"] = true;
+                    }
+                }
             }
             else
             {

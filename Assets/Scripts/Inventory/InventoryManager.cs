@@ -90,7 +90,7 @@ public class InventoryManager : MonoBehaviour
 
     public void HandleItemSelection(InventoryItem item)
     {
-        Debug.Log("Freaky Jumpscare");
+        Debug.Log("Slot Initialized: " + item.itemInitialized);
     }
     public void HandleBeginDrag(InventoryItem item)
     {
@@ -127,5 +127,20 @@ public class InventoryManager : MonoBehaviour
     {
         currentlyHoveringItem = false;
         Debug.Log("End Hovering Item");
+    }
+
+    public void CombineItems(string nameOfItem)
+    {
+        for (int i = 0; i < inventoryList.Count; i++)
+        {
+            InventoryItem inventoryItem = inventoryList[i];
+            if (inventoryItem.itemInitialized && inventoryItem.transform.GetChild(0).name == nameOfItem)
+            {
+                Destroy(inventoryItem.transform.GetChild(0).gameObject);
+                Image itemImage = inventoryItem.GetComponent<Image>();
+                itemImage.sprite = null;
+                inventoryItem.itemInitialized = false;
+            }
+        }
     }
 }
