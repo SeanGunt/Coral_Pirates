@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Maren : NPC
 {
+    [SerializeField] private GameObject completedMap;
+    [SerializeField] private Sprite mapSprite;
     private bool ledgerPiecesFound = false;
     public override void OnClickableClicked()
     {
@@ -13,6 +15,8 @@ public class Maren : NPC
             {
                 Debug.Log("Doing the thing");
                 indexOfDialogue++;
+                InventoryManager.instance.CombineItems("Item_LedgerPiece(Clone)");
+                AddToInventory(completedMap, mapSprite);
                 ledgerPiecesFound = true;
             }
         }

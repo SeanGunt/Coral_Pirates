@@ -13362,7 +13362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0afe371543d61a5468bc0dbafa402b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activationDistance: 0
+  activationDistance: 6
   dialogue:
   - dialogueToUse:
     - Find da pieces of ledger please
@@ -13373,6 +13373,8 @@ MonoBehaviour:
   characterName: Maren
   index: 0
   indexOfDialogue: 0
+  completedMap: {fileID: 8586634142944422792, guid: 9924cd7b50930c84ea0bd2daed00afd0, type: 3}
+  mapSprite: {fileID: 21300000, guid: b21bb225c6452bf43bfcd51b9364991d, type: 3}
 --- !u!1 &1457290077
 GameObject:
   m_ObjectHideFlags: 0
