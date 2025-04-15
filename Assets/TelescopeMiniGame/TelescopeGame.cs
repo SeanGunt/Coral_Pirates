@@ -11,14 +11,15 @@ public class TelescopeGame : MonoBehaviour
     [SerializeField]
     private Camera telescopeCamera;
     private Vector3 dragOrigin;
-
     public SpriteRenderer mapBackground;
-
     private float mapMinX, mapMaxX, mapMinY, mapMaxY;
-
     private float zoomStep, minCamSize, maxCamSize;
-
     private float viewport = 10f;
+    public Canvas telescopeCanvas;
+    public int currentPieces;
+    public int totalPieces;
+    public TextMeshProUGUI collectedText;
+    public GameObject[] findingSpots;
 
     private void OnEnable()
     {
@@ -30,10 +31,7 @@ public class TelescopeGame : MonoBehaviour
     private void Update()
     {
         PanCamera();        
-    
-
     }
-
 
     private void PanCamera()
     {
@@ -50,7 +48,6 @@ public class TelescopeGame : MonoBehaviour
             telescopeCamera.transform.position += difference;
             //telescopeCamera.transform.position = ClampCamera(telescopeCamera.transform.position + difference);
         }
-
     }
 
     private void MapBoundary()
@@ -100,35 +97,19 @@ public class TelescopeGame : MonoBehaviour
         GameManager.instance.lemCanMove = true;
 
     }
-
-    public Canvas telescopeCanvas;
-
-    public int currentPieces;
-    public int totalPieces;
-
-    public TextMeshProUGUI collectedText;
-    private bool happyPete;
-    public GameObject findingSpots;
     
-    public void CollectPages(int totalPieces)
+    public void CollectPages()
     {
-        currentPieces += totalPieces;
-    }
+        currentPieces += 1;
 
-    public void UpdateCollected()
-    {
         collectedText.text = currentPieces + "/" + totalPieces.ToString();
 
         if(currentPieces == totalPieces)
         {
-            findingSpots.SetActive(true);
+            foreach (GameObject findingSpot in findingSpots)
+            {
+                findingSpot.SetActive(true);
+            }
         }
     }
-
-    //after theyve been clicked, 
-    //the 2d box colliders with the 
-    //pieces in the boardwalk scene are enabled.
-
-    
-   
 }

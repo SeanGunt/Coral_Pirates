@@ -68,6 +68,7 @@ public class PlayerPointClick : MonoBehaviour, IDataGrabber
         }
         else if (Input.GetMouseButtonDown(0) && !PauseMenu.instance.GetPauseStatus() && !GameManager.instance.lemCanMove)
         {
+            if (DialogueManager.instance.currentNPC == null) return;
             DialogueManager.instance.ContinueDialogue();
         }
     }
