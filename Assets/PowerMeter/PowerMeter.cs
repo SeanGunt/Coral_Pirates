@@ -25,7 +25,6 @@ public class PowerMeter : MonoBehaviour
     
     void Update()
     {
-        Debug.Log(stopSlider);
 
         StopMeter();
         
@@ -79,14 +78,14 @@ public class PowerMeter : MonoBehaviour
 
     void MeterMoveRight()
     {
-        increaseSpeed = 20 * Time.deltaTime;
+        increaseSpeed = 120 * Time.deltaTime;
         mainSlider.value += increaseSpeed;
         
     }
 
     void MeterMoveLeft()
     {
-        decreaseSpeed = 20 * Time.deltaTime;
+        decreaseSpeed = 70 * Time.deltaTime;
         mainSlider.value -= decreaseSpeed;
     }
 }
