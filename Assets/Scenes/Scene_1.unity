@@ -380,11 +380,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 79495125}
   m_CullTransparentMesh: 1
---- !u!61 &114939925 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 1538441695071772911, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-  m_PrefabInstance: {fileID: 1754566355}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &120726363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3630,7 +3625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &525849937
 Transform:
   m_ObjectHideFlags: 0
@@ -6148,17 +6143,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &785946511 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5395766467139520814, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-  m_PrefabInstance: {fileID: 1754566355}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca398bf46953f348a56e9e236e6eb2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &791562953
 GameObject:
   m_ObjectHideFlags: 0
@@ -9621,11 +9605,6 @@ Transform:
   - {fileID: 443598996}
   m_Father: {fileID: 2104680039}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!223 &1121706899 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 3854200335555109453, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-  m_PrefabInstance: {fileID: 1754566355}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1131419692
 GameObject:
   m_ObjectHideFlags: 0
@@ -11276,7 +11255,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1297515761
 Transform:
   m_ObjectHideFlags: 0
@@ -11478,11 +11457,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1307960239}
   m_CullTransparentMesh: 1
---- !u!61 &1311588844 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 1591894607543417484, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-  m_PrefabInstance: {fileID: 1754566355}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1321235234
 GameObject:
   m_ObjectHideFlags: 0
@@ -13955,7 +13929,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1563757536
 Transform:
   m_ObjectHideFlags: 0
@@ -15539,7 +15513,7 @@ GameObject:
   - component: {fileID: 1719668551}
   - component: {fileID: 1719668554}
   - component: {fileID: 1719668553}
-  - component: {fileID: 1719668552}
+  - component: {fileID: 1719668555}
   m_Layer: 0
   m_Name: ClickableTelescope
   m_TagString: Untagged
@@ -15562,20 +15536,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 478019657}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1719668552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1719668550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc976ac89cb2ccb499fcf3b88bf057b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activationDistance: 6
-  minigameObject: {fileID: 404022186}
 --- !u!114 &1719668553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15593,8 +15553,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1719668552}
-          m_TargetAssemblyTypeName: Minigame, Assembly-CSharp
+        - m_Target: {fileID: 1719668555}
+          m_TargetAssemblyTypeName: LedgerMinigame, Assembly-CSharp
           m_MethodName: OnClickableClicked
           m_Mode: 1
           m_Arguments:
@@ -15650,6 +15610,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.559613, y: 3.8724976}
   m_EdgeRadius: 0
+--- !u!114 &1719668555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719668550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18678808a7eaf314eb10abfcea8a0860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activationDistance: 4
+  minigameCanvas: {fileID: 404022186}
 --- !u!1 &1725491342
 GameObject:
   m_ObjectHideFlags: 0
@@ -15769,22 +15743,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1704940481}
     m_Modifications:
-    - target: {fileID: 2320706889754483452, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 114939925}
-    - target: {fileID: 2320706889754483452, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: set_enabled
-      objectReference: {fileID: 0}
-    - target: {fileID: 3935964245940039181, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.4344673
-      objectReference: {fileID: 0}
-    - target: {fileID: 3953540970380661415, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.4344673
-      objectReference: {fileID: 0}
     - target: {fileID: 4756720743890664603, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.8600512
@@ -15825,62 +15783,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5268436071061222460, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5268436071061222460, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5268436071061222460, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 785946511}
-    - target: {fileID: 5268436071061222460, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 404022186}
-    - target: {fileID: 5268436071061222460, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ExitGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 5268436071061222460, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 5268436071061222460, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: TelescopeGame, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5268436071061222460, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 5395766467139520814, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-      propertyPath: findingSpots
+      propertyPath: findingSpots.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1297515760}
     - target: {fileID: 5395766467139520814, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-      propertyPath: telescopeCanvas
+      propertyPath: findingSpots.Array.data[1]
       value: 
-      objectReference: {fileID: 1121706899}
-    - target: {fileID: 5416608563736568555, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-      propertyPath: field of view
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 5416608563736568555, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-      propertyPath: far clip plane
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 5416608563736568555, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-      propertyPath: near clip plane
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5416608563736568555, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-      propertyPath: orthographic size
-      value: 10.98
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 525849936}
+    - target: {fileID: 5395766467139520814, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
+      propertyPath: findingSpots.Array.data[2]
+      value: 
+      objectReference: {fileID: 1563757535}
     - target: {fileID: 7408224265038799399, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
       propertyPath: m_Name
       value: TelescopeGame
@@ -15889,25 +15803,13 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7681589562702466529, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 2098549473}
-    - target: {fileID: 7681589562702466529, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: set_enabled
+    - target: {fileID: 9175071140493897941, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7681589562702466529, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.Behaviour, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8368506746028675806, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1311588844}
-    - target: {fileID: 8368506746028675806, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: set_enabled
+    - target: {fileID: 9175071140493897941, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18451,11 +18353,6 @@ PolygonCollider2D:
       - {x: -1.07, y: -2.63}
       - {x: 1.2, y: -5.68}
   m_UseDelaunayMesh: 0
---- !u!61 &2098549473 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 545225167067071485, guid: f3352c6c6b1d84c4eb21e304c6d45c69, type: 3}
-  m_PrefabInstance: {fileID: 1754566355}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2104680038
 GameObject:
   m_ObjectHideFlags: 0
