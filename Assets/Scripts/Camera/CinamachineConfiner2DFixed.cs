@@ -11,4 +11,9 @@ public class CinamachineConfiner2DFixed : CinemachineConfiner2D
         base.Awake();
         m_BoundingShape2D = m_InitialBoundingShape2D;
     }
+
+    public void ChangeBoundingShape(PolygonCollider2D nextBoundingShape)
+    {
+        m_BoundingShape2D =  nextBoundingShape;
+    }
 }
